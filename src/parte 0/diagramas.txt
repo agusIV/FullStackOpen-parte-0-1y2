@@ -1,0 +1,75 @@
+https://www.websequencediagrams.com/
+
+0.4
+_________________________________________________________________________________
+title solicitud POST
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+
+note over server:
+adds the note to the array and
+redirect to "/ notes"
+end note
+
+server-->browser:HTML-code
+
+note over browser,server
+the page restarts
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+server-->browser: main.js
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [{ content: "HTML is easy", date: "2019-05-23" }, ...]
+_________________________________________________________________________________
+
+0.5
+_________________________________________________________________________________
+title spa
+
+browser->server:HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+server-->browser:HTML-code
+
+note over browser
+the form has no action or method attributes
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+server-->browser: spa.js
+
+note over browser
+comes with a function that updates the list with the new note
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [{ content: "HTML is easy", date: "2019-05-23" }, ...]
+
+note over browser,server
+it is the same sequence of requests,
+only the code varies
+end note
+_________________________________________________________________________________
+
+0.6
+_________________________________________________________________________________
+title solicitud POSTspa
+
+note over browser
+add the note to the local array
+and makes it visible in html
+with the redraw function
+end note
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+
+note over server:
+if the note is valid,
+adds it to the server array
+end note
+
+server-->browser:Status 201 y console.log(new note)
+_________________________________________________________________________________
